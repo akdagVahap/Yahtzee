@@ -30,13 +30,13 @@ public class Match implements Runnable {
 
             for (int tur = 0; tur < toplamTur; tur++) {
 
-                // ─── OYUNCU 1'İN TURU ───
+                // player 1 turn 
                 out1.writeObject(new GameMessage("SIRA_SENDE", ""));
                 out1.flush();
                 out2.writeObject(new GameMessage("BEKLE", ""));
                 out2.flush();
 
-                // ikisine de reset gönder
+                // send reset both players
                 GameMessage reset1 = new GameMessage();
                 reset1.tip = "RESET_ZARLAR";
                 out1.writeObject(reset1);
@@ -44,17 +44,17 @@ public class Match implements Runnable {
                 out2.writeObject(reset1);
                 out2.flush();
 
-                // oyuncu1 oynasın
+                // play player1
                 oynaTur(in1, out2);
                 out1.writeObject(new GameMessage("BEKLE", ""));
                 out1.flush();
-                // ─── OYUNCU 2'NİN TURU ───
+                //turn player 2
                 out2.writeObject(new GameMessage("SIRA_SENDE", ""));
                 out2.flush();
                 out1.writeObject(new GameMessage("BEKLE", ""));
                 out1.flush();
 
-                // ikisine de reset gönder
+                // send reset both
                 GameMessage reset2 = new GameMessage();
                 reset2.tip = "RESET_ZARLAR";
                 out1.writeObject(reset2);
@@ -62,7 +62,7 @@ public class Match implements Runnable {
                 out2.writeObject(reset2);
                 out2.flush();
 
-                // oyuncu2 oynasın
+                // play player2
                 oynaTur(in2, out1);
             }
 
