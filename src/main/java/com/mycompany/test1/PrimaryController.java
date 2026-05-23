@@ -222,7 +222,8 @@ public class PrimaryController implements Initializable {
             @Override
             public void run() {
                 try {
-                    Socket socket = new Socket("127.0.0.1", 1414);
+
+                    Socket socket = new Socket("13.60.74.100", 1414);
                     out = new ObjectOutputStream(socket.getOutputStream());
                     in = new ObjectInputStream(socket.getInputStream());
 
